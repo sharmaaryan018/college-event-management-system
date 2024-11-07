@@ -1,0 +1,30 @@
+/* Import Montserrat Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Montserrat Variable Style
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900 */
+
+/* Import Montserrat Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Montserrat Variable Style */
+.montserrat-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* Bold weight */
+}
+
+.montserrat-subheading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; /* Medium weight */
+}
+
+.montserrat-body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; /* Regular weight */
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+}

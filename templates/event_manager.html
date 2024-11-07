@@ -1,0 +1,501 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .logout-button {
+            margin-top: 40px;
+  background-color: #ff4d4d; /* Red color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* For hover animation */
+}
+
+.logout-button:hover {
+  background-color: #e60000; /* Darker red on hover */
+  transform: scale(1.1); /* Slightly enlarge the button */
+}
+
+.logout-button:active {
+  background-color: #cc0000; /* Even darker red on click */
+  transform: scale(1); /* Return to normal size on click */
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <form action="/event" method="post" enctype="multipart/form-data">
+                <label for="name">Event Name:</label>
+                <input type="text" id="name" name="name" required>
+    
+                <label for="start_date">Event Start Date:</label>
+                <input type="date" id="start_date" name="start_date" required>
+    
+                <label for="end_date">Event End Date:</label>
+                <input type="date" id="end_date" name="end_date" required>
+    
+                <label for="location">Event Location:</label>
+                <input type="text" id="location" name="location" required>
+    
+                <label for="description">Event Description:</label>
+                <textarea id="description" name="description" required></textarea>
+    
+                <label for="image">Event Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+    
+                <label for="type">Event Type:</label>
+                <select id="type" name="type">
+                    <option value="education">Education</option>
+                    <option value="social">Social</option>
+                    <option value="seminar">Seminar</option>
+                </select>
+    
+                <label for="is_paid">Event Cost:</label>
+                <select id="is_paid" name="is_paid">
+                    <option value="free">Free</option>
+                    <option value="paid">Paid</option>
+                </select>
+    
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div>
+            <a href="/logout" class="logout-button">Logout</a>
+
+        </div>
+    </div>
+</body>
+
+</html> -->
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Manager</title>
+    <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .container {
+            width: 60%;
+            padding: 10px 40px 10px 40px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border: 1px solid #e5e5e5;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #333333;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .logout-button {
+            margin-top: 20px;
+            display: inline-block;
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .logout-button:hover {
+            background-color: #e60000;
+            transform: scale(1.05);
+        }
+
+        .logout-button:active {
+            background-color: #cc0000;
+            transform: scale(1);
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #343a40;
+        }
+        .class{
+            flex: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Event Manager</h1>
+        <form action="/event" method="post" enctype="multipart/form-data">
+            <label for="name">Event Name:</label>
+            <input type="text" id="name" name="name" required>
+            <div class="date">
+                <div>
+                    <label for="start_date">Event Start Date:</label>
+                    <input type="date" id="start_date" name="start_date" required>
+                </div>
+                <div>
+                    <label for="end_date">Event End Date:</label>
+            <input type="date" id="end_date" name="end_date" required>
+                </div>
+            </div>
+          
+
+            
+
+            <label for="location">Event Location:</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="description">Event Description:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <label for="image">Event Image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+
+            <label for="type">Event Type:</label>
+            <select id="type" name="type">
+                <option value="education">Education</option>
+                <option value="social">Social</option>
+                <option value="seminar">Seminar</option>
+            </select>
+
+            <label for="is_paid">Event Cost:</label>
+            <select id="is_paid" name="is_paid">
+                <option value="free">Free</option>
+                <option value="paid">Paid</option>
+            </select>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <div>
+            <a href="/logout" class="logout-button">Logout</a>
+        </div>
+    </div>
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Manager</title>
+    <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 60%;
+            padding: 40px;
+            padding-top:5px;
+            padding-bottom: 5px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(195, 88, 88, 0.1);
+            border-radius: 10px;
+            border: 1px solid #e5e5e5;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 24px;
+            color: #409cf8;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+            color: #333333;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .logout-button a {
+           
+            display: inline-block;
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 100%;
+        }
+
+        .logout-button:hover a {
+            background-color: #e60000;
+            transform: scale(1.05);
+        }
+
+        .logout-button:active {
+            background-color: #cc0000;
+            transform: scale(1);
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .date {
+            display: flex;
+            justify-content: space-between; /* Distributes space between elements */
+            
+            gap: 0px; /* Adds gap between the date inputs */
+        }
+        .date1{
+            width: 45%;
+        }
+        .date2{
+            width: 45%;
+        }
+
+        .date input {
+            flex: 1; /* Allows inputs to grow equally */
+        }
+        .bottom{
+            display: flex;
+            justify-content: space-between; /* Distributes space between elements */
+
+            gap: 0px;
+        }
+        .submit{
+            width: 45%;
+        }
+        .logout-button{
+            width: 45%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Event Manager</h1>
+        <form action="/event" method="post" enctype="multipart/form-data">
+            <label for="name">Event Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <div class="date">
+                <div class="date1">
+                    <label  for="start_date">Event Start Date:</label>
+                    <input type="date" id="start_date" name="start_date" required>
+                </div>
+                <div class="date2">
+                    <label for="end_date">Event End Date:</label>
+                    <input type="date" id="end_date" name="end_date" required>
+                </div>
+            </div>
+
+            <label for="location">Event Location:</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="description">Event Description:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <label for="image">Event Image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+
+            <label for="type">Event Type:</label>
+            <select id="type" name="type">
+                <option value="education">Education</option>
+                <option value="social">Social</option>
+                <option value="seminar">Seminar</option>
+            </select>
+
+            <label for="is_paid">Event Cost:</label>
+            <select id="is_paid" name="is_paid">
+                <option value="free">Free</option>
+                <option value="paid">Paid</option>
+            </select>
+            <div class="bottom">
+                <div class="submit">
+                    <input type="submit" value="Submit">
+                </div>
+                <div class="logout-button">
+                    <a href="/logout" >Logout</a>
+                </div>
+            </div>
+            
+        </form>
+
+      
+    </div>
+</body>
+
+</html>

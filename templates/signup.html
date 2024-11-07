@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <style>
+       /* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #e6e4e4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 900px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* Image section */
+.signup-image {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-image img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Signup form section */
+.signup-form-section {
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signup-form-section h2 {
+    font-size: 32px;
+    color: #CD354D;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.signup-form-section .form-group {
+    margin-bottom: 15px;
+}
+
+.signup-form-section label {
+    font-size: 16px;
+    color: #3053D3;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.signup-form-section input[type="text"],
+.signup-form-section input[type="email"],
+.signup-form-section input[type="password"],
+.signup-form-section select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    font-size: 16px;
+}
+
+.signup-form-section input[type="text"]::placeholder,
+.signup-form-section input[type="email"]::placeholder,
+.signup-form-section input[type="password"]::placeholder {
+    color: #aaa;
+}
+
+.signup-form-section input[type="submit"] {
+    width: 105%;
+    background-color: #3053D3;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.signup-form-section input[type="submit"]:hover {
+    background-color: #0037ff;
+}
+
+.signup-form-section .login-link {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #3053D3;
+    cursor: pointer;
+    text-align: center;
+}
+
+.signup-form-section .login-link a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.signup-form-section .login-link a:hover {
+    color: #0037ff;
+}
+
+/* Error message styling */
+#signup-error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .signup-container {
+        flex-direction: column;
+    }
+
+    .signup-image {
+        width: 100%;
+        height: 200px;
+        
+    }
+
+    .signup-form-section {
+        width: 80%;
+        padding: 20px;
+    }
+
+    .signup-form-section input[type="submit"] {
+        padding: 0px;
+    }
+}
+
+    </style>
+    <script>
+        window.addEventListener('load', function() {
+            toggleIdField();
+        });
+
+        async function handleSignupError() {
+            const errorDiv = document.getElementById('signup-error');
+            const name = document.getElementById('name').value;
+            const prn = document.getElementById('prn').value;
+            const facultyId = document.getElementById('faculty_id').value;
+            const eventId = document.getElementById('event_id').value;
+            const email = document.getElementById('email').value;
+            const category = document.getElementById('category').value;
+
+            let id;
+            if (category === 'student') {
+                id = prn;
+            } else if (category === 'faculty') {
+                id = facultyId;
+            } else if (category === 'event_manager') {
+                id = eventId;
+            }
+
+            const isDuplicate = await checkForDuplicate(name, id, email);
+
+            if (isDuplicate) {
+                errorDiv.innerText = 'Credentials are already taken. Please choose another.';
+                return false;
+            }
+
+            errorDiv.innerText = '';
+            return true;
+        }
+
+        async function checkForDuplicate(name, id, email) {
+            const response = await fetch('/check-duplicate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, id, email }),
+            });
+
+            const data = await response.json();
+            return data.isDuplicate;
+        }
+
+        function toggleIdField() {
+            const category = document.getElementById('category').value;
+            const prnField = document.getElementById('prn-field');
+            const facultyIdField = document.getElementById('faculty_id-field');
+            const eventIdField = document.getElementById('event_id-field');
+
+            prnField.style.display = 'none';
+            facultyIdField.style.display = 'none';
+            eventIdField.style.display = 'none';
+
+            if (category === 'student') {
+                prnField.style.display = 'block';
+            } else if (category === 'faculty') {
+                facultyIdField.style.display = 'block';
+            } else if (category === 'event_manager') {
+                eventIdField.style.display = 'block';
+            }
+        }
+
+        function showLoginForm() {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="signup-container">
+        <!-- Left-side image -->
+        <div class="signup-image"> <img src="/image/image.png" alt=""></div>
+
+        <!-- Right-side signup form -->
+        <div class="signup-form-section">
+            <h2>Signup</h2>
+            <div id="signup-error"></div>
+            <form class="signup-form" action="/signup" method="POST" onsubmit="return handleSignupError();">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group" style="width: 105%;">
+                    <label for="category">Category:</label>
+                    <select id="category" name="category" onchange="toggleIdField()" required>
+                        <option value="student">Student</option>
+                        <option value="faculty">Faculty</option>
+                        <option value="event_manager">Event Manager</option>
+                    </select>
+                </div>
+                <div id="prn-field" class="form-group" style="display:none;">
+                    <label for="prn">PRN:</label>
+                    <input type="text" id="prn" name="prn" placeholder="Enter your PRN">
+                </div>
+                <div id="faculty_id-field" class="form-group" style="display:none;">
+                    <label for="faculty_id">Faculty ID:</label>
+                    <input type="text" id="faculty_id" name="faculty_id" placeholder="Enter your Faculty ID">
+                </div>
+                <div id="event_id-field" class="form-group" style="display:none;">
+                    <label for="event_id">Event ID:</label>
+                    <input type="text" id="event_id" name="event_id" placeholder="Enter your Event ID">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <input type="submit" class="submit-button" value="Signup">
+            </form>
+            <p class="login-link" onclick="showLoginForm()">Already have an account? <a href="#">Login here</a></p>
+        </div>
+    </div>
+</body>
+</html>

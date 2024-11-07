@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="faculty.css">
+    <link rel="stylesheet" href="utility.css">
+    <!-- <link rel="stylesheet" href="student.css"> -->
+    <title>Welcome to Your Faculty Page</title>
+
+    <style>
+        /* Reset default margin and padding */
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    /* Changed background color to white */
+    color: #000000;
+    /* Changed text color to black */
+    line-height: 1.6;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(4, 4, 4, 0.7);
+    padding: 80px 30px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s;
+    height: 130px;
+}
+
+.navbar:hover {
+    background-color: rgba(22, 22, 22, 0.962);
+}
+
+.navbar-toggle {
+    display: none;
+}
+
+
+.container {
+    width: 98%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-left img {
+    height: 130px;
+    width: 350px;
+}
+
+.navbar-right {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-right li {
+    margin-right: 20px;
+    list-style-type: none;
+    transition: transform 0.3s;
+}
+
+.navbar-right li:hover {
+    transform: scale(1.1);
+    /* Scale the list item on hover */
+}
+
+.navbar-right li:last-child {
+    margin-right: 0;
+}
+
+.navbar-right button {
+    display: inline-block;
+    /* margin-right: 20px; */
+    padding: 10px 15px;
+    /* Added some horizontal padding */
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    text-transform: capitalize;
+    transition: background-color 0.3s, transform 0.3s;
+    /* Added transition for scaling */
+    border: none;
+    font-size: 18px;
+}
+
+.navbar-right button:hover {
+    transform: scale(1.1);
+    background-color: #0056b3;
+    /* Scale the button on hover */
+}
+
+.navbar-right a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    font-weight: bolder;
+    line-height: 1.5;
+    transition: color 0.3s, transform 0.3s;
+    /* Added transition for scaling */
+}
+
+.navbar-right a:hover {
+    color: rgba(202, 196, 196, 0.8);
+    transform: scale(1.1);
+    /* Scale the link on hover */
+}
+
+.navbar-right li:last-child {
+    margin-right: 0;
+}
+
+.navbar-right .signup-button {
+    display: inline-block;
+    /* margin-right: 20px; */
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    text-transform: capitalize;
+    transition: background-color 0.3s;
+    border: none;
+    font-size: 18px;
+}
+
+.navbar-right .signup-button:hover {
+    transform: scale(1.1);
+    background-color: #0056b3;
+}
+
+
+.logo {
+    width: 50px;
+    /* Adjust size as needed */
+    height: auto;
+    /* Maintain aspect ratio */
+    margin-right: 20px;
+}
+
+/* Section styles */
+section {
+    padding: 40px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+h2 {
+    margin-top: 100px;
+    margin-bottom: 20px;
+    color: #000000;
+    font-size: 28px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #000000;
+}
+
+.navbar-right .signup-button {
+    display: inline-block;
+    /* margin-right: 20px; */
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    text-transform: capitalize;
+    transition: background-color 0.3s;
+    border: none;
+    font-size: 18px;
+}
+
+.navbar-right .signup-button:hover {
+    transform: scale(1.1);
+    background-color: #0056b3;
+}
+
+.navbar-right .close-button {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .navbar-right .close-button {
+        display: block;
+    }
+}
+
+.img-navline img {
+    top: 160px;
+    position: fixed;
+    width: 100vw;
+    z-index: 1000;
+    /* Ensure it stays on top of other elements */
+}
+
+/* Home section styles */
+#home {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding-top: 100px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    z-index: 1;
+    /* height: 100vh; */
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/uploads/mitdome.jpg');
+    /* Background image */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    /* Adjust the opacity */
+    z-index: -1;
+    /* Send the image behind the content */
+}
+
+#home h2 {
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+}
+
+.home-content {
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    /* align-items: center; */
+}
+
+.home-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.home-text {
+    max-width: 100%;
+}
+
+.home-text h2 {
+    font-size: 20px;
+    color: rgb(229, 229, 229);
+    margin-bottom: 20px;
+}
+
+.home-text p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-align: justify;
+}
+
+.cta-buttons {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.cta-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2980b9;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.cta-buttons a:hover {
+    background-color: #3498db;
+}
+
+.social-links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.social-icon {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 24px;
+    color: #0055A4;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #07bae7;
+}
+
+@media (min-width: 768px) {
+
+    .home-content {
+        /* padding-top: 300px; */
+        flex-direction: row;
+    }
+
+    .home-image img {
+        height: 520px;
+        max-width: 100%;
+    }
+
+    .home-text {
+        max-width: 50%;
+        margin-top: 165px;
+    }
+}
+
+
+/* About section styles */
+
+#about {
+    padding: 72px 115px;
+    background: #d2b4b44b;
+    border-radius: 15px;
+}
+
+#about h2 {
+    color: #0c0c0c;
+    text-align: center;
+    margin-top: -28px;
+    margin-bottom: 33px;
+}
+
+.about .about-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.about .about-card {
+    background: #444;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    padding: 20px;
+    margin: 10px;
+    width: 250px;
+    text-align: center;
+}
+
+.about .about-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.about .about-card i {
+    font-size: 40px;
+    color: #0c0c0c;
+}
+
+.about .about-card h3 {
+    color: #fff;
+    margin: 10px 0;
+}
+
+.about .about-card p {
+    color: #aaa;
+}
+
+
+
+
+/* #about { */
+/* height: 100vh; */
+/* padding: 100px;
+    background-color: #000000;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 10px; */
+/* padding: 72px 115px;
+    background: #d2b4b44b;
+    border-radius: 15px;
+}
+#about h2{
+    
+    color: #0c0c0c;
+    text-align: center;
+    margin-top: -28px;
+    margin-bottom: 33px;
+}
+.about-cards {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding: 50px; */
+/* padding-left: 210px; */
+/* } */
+
+/* .about-card {
+    padding: 5px;
+    width: 350px;
+    height: 200px; 
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+    border: 2px solid #232323;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+}
+
+.about-card i {
+   font-size: 40px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.about-details {
+    padding: 20px;
+}
+
+.about-details h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #000000;
+}
+
+.about-details p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333333;
+} */
+
+
+
+
+/* Event slider styles */
+#events {
+    padding: 50px 20px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+.eventContainer {
+    margin-top: 50px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.eventContainer h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.event-slider {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.event-list {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.event-item {
+    flex: 0 0 100%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.event-item:hover {
+    transform: translateY(-5px);
+}
+
+.card_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-image {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.event-details {
+    text-align: center;
+}
+
+.event-details h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.event-details p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #666;
+}
+
+.register-button {
+    display: inline-block;
+    background-color: #0055A4;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.register-button:hover {
+    background-color: #003d7a;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filters button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 21px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    font-size: 18px;
+}
+
+.filters button:hover {
+    background: #0056b3;
+    transform: scale(1.1);
+}
+
+#prevBtn,
+#nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+#prevBtn:hover,
+#nextBtn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.slider-dot.active {
+    background-color: #0055A4;
+}
+
+@media (max-width: 768px) {
+    .event-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .filters button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* Rules section styles */
+#rules {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    /* height: ; */
+    border-radius: 10px;
+
+}
+
+.Rulecontainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.rules-heading {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.rules-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.rule-box {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.rule-box h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.rule-box p {
+    font-size: 14px;
+    color: #666;
+}
+
+.faq-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* max-width: 1200px; Adjust the max-width as needed */
+    margin: 0 auto;
+    /* Centers the container horizontally */
+}
+
+h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.faq {
+    margin-bottom: 10px 0;
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 0;
+    transition: background-color 0.3s;
+    justify-content: space-between;
+}
+
+.faq-question:hover {
+    background-color: #e0e0e0;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    border-top: 1px solid #ddd;
+    background-color: #fafafa;
+    border-radius: 0 0 4px 4px;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+}
+
+.faq-answer p {
+    margin: 15px 0;
+}
+
+.faq-question.active+.faq-answer {
+    max-height: 200px;
+    /* Adjust as needed */
+    padding: 15px;
+}
+
+@media (max-width: 768px) {
+    #rules {
+        padding: 30px 10px;
+    }
+
+    .rules-heading {
+        font-size: 20px;
+    }
+
+    .rules-boxes {
+        grid-template-columns: 1fr;
+    }
+
+    .rule-box {
+        width: 100%;
+    }
+}
+
+
+
+/*
+
+----------------------responsiveness---------------
+*/
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .navbar-right {
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        display: none;
+        animation: slideInRight 0.3s ease-in-out;
+    }
+
+    .navbar-right ul {
+        display: block;
+    }
+
+    .navbar-right.active {
+        display: flex;
+    }
+
+    .navbar-right li {
+        margin-left: 0;
+        margin-bottom: 1rem;
+    }
+
+    .navbar-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    @keyframes slideInRight {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+}
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <!-- <div class="container"> -->
+            <div class="navbar-left">
+                <img src="https://mitwpu.edu.in/assets/frontend/images/mit_logo.png" alt="Logo" class="logo">
+            </div>
+            <ul class="navbar-right">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Event Listing</a></li>
+                <li><a href="#rules">faculty Rules</a></li>
+                <li><a href="/login" class="signup-button">Signup<i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+                <form id="dashboard-form" action="/dashboard" method="post">
+                    <!-- Use method="get" to pass the email via query string -->
+                    <input type="hidden" name="email" value="<%= email %>"> <!-- Include the email as a hidden input -->
+                    <input type="hidden" name="name" value="<%= userName %>">
+                    <button type="submit" class="dashboard-button">Dashboard</button>
+                </form>
+            </ul>
+        <!-- </div> -->
+    </nav>
+    <div class="img-navline">
+        <img src="https://mitwpu.edu.in/assets/frontend/images/header-line.png" alt="">
+    </div>
+
+    <section id="home">
+        <h2 id="user-name montserrat-heading">Welcome, Prof. <%= userName %>!<br> in our Faculty Portal!</h2>
+        <div class="container">
+            <div class="home-content">
+                <div class="home-image"> <img src="/uploads/SLDP-2024.webp" alt="Image"> </div>
+                <div class="home-text montserrat-body">
+                    <p>Welcome to the Event Management System, your go-to platform for staying updated and engaged with all the exciting happenings at our college!!
+                        We strive to create a vibrant and inclusive community where students can connect, collaborate, and participate in a variety of events. Whether you are looking to enhance your skills, meet new people, or simply have fun, our platform is designed to cater to all your event needs.</p>
+                    <p>If you have any questions or need assistance, don't hesitate to contact us.</p>
+                    <div class="social-links"> <a href="#" class="social-icon"><i class="fa fa-facebook"></i></a> <a
+                            href="#" class="social-icon"><i class="fa fa-twitter"></i></a> <a href="#"
+                            class="social-icon"><i class="fa fa-instagram"></i></a> </div>
+                </div>
+            </div>
+        </div>
+        <div class="cta-buttons"> <a href="#events" class="register-button">View Events</a> <a href="#about"
+                class="register-button">Learn More About Us</a> </div>
+    </section>
+
+    <hr>
+
+    <section id="about" class="about content-section">
+        <h2>About Us</h2>
+        <div class="container">
+            <div class="about-cards">
+                <div class="about-card">
+                    <i class="fa fa-calendar"></i>
+                    <h3>Event Management</h3>
+                    <p>Our platform allows you to browse, view, and stay informed about all events happening in the
+                        college.
+                    </p>
+                </div>
+                <div class="about-card">
+                    <i class="fa fa-users"></i>
+                    <h3>Faculty Engagement</h3>
+                    <p>Engage with other members of college by participating in events and collaborating through our platform.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fa fa-bullhorn"></i>
+                    <h3>Promote Events</h3>
+                    <p>Promote your events and get maximum participation by listing them here on our platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section id="events">
+        <div class="eventContainer">
+            <h2>Event Listing</h2>
+            <div class="filters">
+                <button id="filter-all" onclick="filterEvents('all')">All</button>
+                <button id="filter-seminar" onclick="filterEvents('seminar')">Seminars</button>
+                <button id="filter-social" onclick="filterEvents('social')">Social</button>
+                <button id="filter-education" onclick="filterEvents('education')">Education</button>
+                <button id="filter-free" onclick="filterEvents('free')">Free</button>
+                <button id="filter-paid" onclick="filterEvents('paid')">Paid</button>
+            </div>
+            <div class="event-slider" id="event-slider">
+                <div class="event-list" id="event-list"></div>
+                <button id="prevBtn" onclick="prevSlide()"><i class="fa fas fa-chevron-left"></i></button>
+                <button id="nextBtn" onclick="nextSlide()"><i class="fa fas fa-chevron-right"></i></button>
+                <div class="slider-dots" id="slider-dots"></div>
+            </div>
+
+        </div>
+    </section>
+    <hr>
+    <section id="rules">
+        <div class="Rulecontainer">
+            <h2 class="rules-heading">Faculty Guide</h2>
+            <!-- <p class="rules-para">Welcome to our student guide section! Here you will find important information and resources to help you navigate through your academic journey.</p> -->
+            <div class="rules-boxes">
+                <div class="rule-box">
+                    <h3>Step 1: Registration</h3>
+                    <p>Ensure to register for the event in advance. Provide accurate and complete information during
+                        registration.</p>
+                </div>
+                <div class="rule-box">
+                    <h3>Step 2: Understand the Event</h3>
+                    <p>Read about the event details thoroughly. Understand the purpose, agenda, and rules of the event.
+                    </p>
+                </div>
+                <div class="rule-box">
+                    <h3>Step 3: Punctuality</h3>
+                    <p>Arrive on time for the event. Punctuality shows respect for the event organizers and other
+                        participants.</p>
+                </div>
+                <div class="rule-box">
+                    <h3>Step 4: Participation</h3>
+                    <p>Participate actively in the event. Ask questions, engage in discussions, and contribute your
+                        ideas.</p>
+                </div>
+                <div class="rule-box">
+                    <h3>Step 5: Respect and Decorum</h3>
+                    <p>Maintain respect and decorum during the event. Treat all participants, including the event
+                        organizers and other students, with respect.</p>
+                </div>
+                <div class="rule-box">
+                    <h3>Step 6: Follow-up</h3>
+                    <p>After the event, follow up on any commitments or tasks you have taken up. Provide feedback to the
+                        organizers if requested.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <hr>
+    <section id="faq">
+        <div class="faq-container">
+            <h1 class="montserrat-body"><b>Frequently Asked Questions</b></h1>
+    
+            <div class="faq">
+                <div class="faq-question">
+                    <h3>How do I register for an event?</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="24" height="24"
+                        color="#000000" fill="none">
+                        <path d="M12 4V20M20 12H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" style="color: #000000;" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p>To register for an event, go to the registration page, fill in the required details, and submit the
+                        form. You will receive a confirmation email once your registration is successful.</p>
+                </div>
+            </div>
+    
+            <div class="faq">
+                <div class="faq-question">
+                    <h3>What is the refund policy?</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="24" height="24"
+                        color="#000000" fill="none">
+                        <path d="M12 4V20M20 12H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" style="color: #000000;" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p>Our refund policy allows for refunds up to 48 hours before the event starts. Please contact customer
+                        support for more details.</p>
+                </div>
+            </div>
+    
+            <div class="faq">
+                <div class="faq-question">
+                    <h3>How can I update my registration?</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="24" height="24"
+                        color="#000000" fill="none">
+                        <path d="M12 4V20M20 12H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" style="color: #000000;" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p>You can update your registration by logging into your account and navigating to the 'My
+                        Registrations' section. Click on the event you wish to update and make the necessary changes.</p>
+                </div>
+            </div>
+    
+            <div class="faq">
+                <div class="faq-question">
+                    <h3>Where can I find the event schedule?</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="24" height="24"
+                        color="#000000" fill="none">
+                        <path d="M12 4V20M20 12H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" style="color: #000000;" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p>The event schedule is available on the event details page. You can also find it in the confirmation
+                        email sent to you after registration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <hr> -->
+    <footer style="background-color: #000000;color: white; padding: 20px; text-align: center;  width: 100%; bottom: 0;">
+        <p style="margin-bottom: 10px; color: white;">© 2024 MIT WPU. All rights reserved.</p>
+        <button
+            style="background-color: #007bff; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 12px;"
+            onclick="location.href='mailto:contact@mitwpu.edu.in'">Contact Us</button>
+    </footer>
+
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function () {
+    fetch('/get-events')
+        .then(response => response.json())
+        .then(events => {
+            const eventList = document.getElementById('event-list');
+            let currentIndex = 0;
+            let filteredEvents = events; // Initialize filtered events with all events
+
+            // Function to filter events
+            function filterEvents(category) {
+                filteredEvents = category === 'all' ?
+                    events :
+                    events.filter(event => event.type === category);
+
+                eventList.innerHTML = ''; // Clear existing events
+                currentIndex = 0;
+
+                filteredEvents.forEach((event, index) => {
+                    const eventDiv = document.createElement('div');
+                    eventDiv.classList.add('event-item');
+                    eventDiv.innerHTML = `
+                        <div class="card_container">
+                            <div class="event-image">
+                                <img src="${event.image}" alt="${event.name}" />
+                            </div>
+                            <div class="event-details">
+                                <h3>${event.name}</h3>
+                                <p><strong>Date:</strong> ${event.date}</p>
+                                <p><strong>Location:</strong> ${event.location}</p>
+                                <p><strong>Description:</strong> ${event.description}</p>
+                                <!-- Registration Form -->
+                                <form class="register-form" action="/register" method="post">
+                                    <input type="hidden" name="name" value="<%= userName %>">
+                                    <input type="hidden" name="email" value="<%= email %>">
+                                    <input type="hidden" name="category" value="<%= category %>">
+                                    <input type="hidden" name="event_id" value="${event.id}">
+                                    <input type="hidden" name="event_name" value="${event.name}">
+                                    <input type="hidden" name="image" value="${event.image}">
+                                    <button type="submit" class="register-button">Register Now</button>
+                                </form>
+                            </div>
+                        </div>
+                    `;
+                    eventList.appendChild(eventDiv);
+                });
+
+                updateSlider();
+                updateSliderDots();
+            }
+
+            // Attach event listeners to filter buttons
+            document.getElementById('filter-all').addEventListener('click', () => filterEvents('all'));
+            document.getElementById('filter-seminar').addEventListener('click', () => filterEvents('seminar'));
+            document.getElementById('filter-social').addEventListener('click', () => filterEvents('social'));
+            document.getElementById('filter-education').addEventListener('click', () => filterEvents('education'));
+
+            // Function to update slider position
+            function updateSlider() {
+                const eventItems = document.querySelectorAll('.event-item');
+                const itemWidth = eventItems[0]?.offsetWidth || 0; // Width
+                const newPosition = -currentIndex * itemWidth;
+                document.getElementById('event-list').style.transform = `translateX(${newPosition}px)`;
+            }
+
+            // Function to handle next slide
+            function nextSlide() {
+                if (currentIndex < filteredEvents.length - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0; // Go back to the first event
+                }
+                updateSlider();
+                updateSliderDots();
+            }
+
+            // Function to handle previous slide
+            function prevSlide() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = filteredEvents.length - 1; // Go to the last event
+                }
+                updateSlider();
+                updateSliderDots();
+            }
+
+            // Initialize event listeners for next and previous buttons
+            document.getElementById('nextBtn').addEventListener('click', nextSlide);
+            document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+            // Function to update slider pagination dots
+            function updateSliderDots() {
+                const dotsContainer = document.getElementById('slider-dots');
+                dotsContainer.innerHTML = '';
+                filteredEvents.forEach((event, index) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('slider-dot');
+                    if (index === currentIndex) {
+                        dot.classList.add('active');
+                    }
+                    dot.addEventListener('click', () => {
+                        currentIndex = index;
+                        updateSlider();
+                        updateSliderDots();
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            // Initially display all events
+            filterEvents('all');
+        })
+        .catch(error => console.error('Error fetching events:', error));
+
+    // Get the user name from the URL query string
+    const queryStringParams = new URLSearchParams(window.location.search);
+    const userName = queryStringParams.get('name');
+    if (userName) {
+        document.getElementById('user-name').textContent = userName;
+    }
+
+    // Function to handle form submission for dynamically created forms
+    document.addEventListener('submit', function (event) {
+        if (event.target.matches('.register-form')) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+
+            if (formData.get('event_id') && formData.get('event_name')) {
+                fetch('/register', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Registration successful');
+                    } else {
+                        console.error('Registration failed:', response.statusText);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error submitting registration:', error);
+                });
+            } else {
+                console.error('All fields are required.');
+            }
+        }
+    });  
+});
+
+
+    </script>
+
+
+</body>
+
+</html>
